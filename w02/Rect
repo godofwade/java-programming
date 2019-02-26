@@ -1,0 +1,87 @@
+package Mon;
+
+public class Rect {
+
+
+		private int height;
+		private int width;
+
+		public Rect(int h,int w)
+		{
+			height=h;
+			width=w;
+		}
+		
+		public Rect()
+		{
+			
+		}
+		
+		
+		public void draw()
+		{
+			for(int i=1;i<=height;i++)
+			{
+				for(int j=1;j<=width;j++)
+				{
+					System.out.print("*");
+					
+				}
+				System.out.println();
+			}
+		}
+		
+		public void setheight(int h)
+		{
+			height=h;
+		}
+		
+		public void setwidth(int w)
+		{
+			width=w;
+		}	
+		
+		public int getheight()
+		{
+			return height;
+		}
+		
+		public int getwidth()
+		{
+			return width;
+		}	
+	}
+
+
+-------------------------------------------------
+
+
+package Mon;
+
+import java.util.Scanner;
+
+public class Rect_test {
+
+	public static void main(String[] args) {
+		int height;
+		int width;
+		Scanner input=new Scanner(System.in);
+		
+		System.out.print("Enter Height and Width: ");
+		height=input.nextInt();
+		width=input.nextInt();
+		
+		Rect rect=new Rect(height,width);
+		rect.draw();
+		
+		System.out.println("Height: "+rect.getheight()+", Width: "+rect.getwidth());
+		
+		Rect rect2=new Rect();
+		rect2.setheight(8);
+		rect2.setwidth(8);
+		rect2.draw();
+		System.out.println("Height: "+rect2.getheight()+", Width: "+rect2.getwidth());
+		
+	}
+
+}
