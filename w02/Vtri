@@ -1,0 +1,88 @@
+package Tue;
+
+public class Vtri {
+	private int H;
+	private int T;
+	
+	public Vtri(int H,int T)
+	{
+		this.H = H;
+		this.T = T;
+	}
+	
+	public void draw()
+	{
+		switch(T)
+		{
+		case 1:
+			for(int i=1;i<=H;i++)
+			{
+				prchar("*",i);
+				System.out.println();
+			}				
+				break;					
+		case 2:			
+			for(int j=1;j<=H;j++)
+			{
+				prchar(" ",H-j);
+				prchar("*",j);
+				System.out.println();
+			}
+				break;
+		case 3:
+			for(int l=H;l>0;l--)
+			{
+				prchar("*",l);
+				System.out.println();
+			}
+				break;
+		case 4:
+			for(int g=H;g>0;g--)
+			{
+				prchar(" ",H-g);
+				prchar("*",g);
+				System.out.println();
+			}
+				break;
+		}
+	}
+
+	void prchar(String c,int n)
+	{
+		for(int k=1;k<=n;k++)
+		System.out.print(c);
+	}
+	
+	
+}
+
+
+---------------------------------------------------------
+
+
+package Tue;
+
+import java.util.Scanner;
+
+public class Vtri_test {
+
+	public static void main(String[] args) {
+
+		Vtri Vtri1 = new Vtri(5,1);
+		Vtri1.draw();
+		System.out.println();
+		
+		Vtri Vtri2 = new Vtri(5,2);
+		Vtri2.draw();
+		System.out.println();
+		
+		Vtri Vtri3 = new Vtri(5,3);
+		Vtri3.draw();
+		System.out.println();
+		
+		Vtri Vtri4 = new Vtri(5,4);
+		Vtri4.draw();
+		System.out.println();		
+	}
+
+}
