@@ -1,0 +1,225 @@
+package polyphism;
+
+public class Rect extends Shape{
+	   
+	   private int width;
+	   
+	   public Rect(int h, int w) {
+		   super(h);
+		   width = w;
+	   }
+	   
+	   
+	   public Rect() {
+		 super();
+	}
+
+	   
+	 
+	   public void setWidth(int w) {
+		  width = w;   
+	   }
+	   
+	   public int getWidth() {
+		   return width;
+	   }
+	   
+		@Override
+		public String toString() {
+			return "Rect [width=" + width + ", height=" + height + "]";
+		}  
+	   
+	   public void draw() {
+		   for(int i=1;i<=height;i++) {
+			   for(int j=1;j<=width;j++)
+				   System.out.print("*");
+			   System.out.println();
+		   }
+	   }
+	}
+  
+  
+  
+  
+  -------------------------------------------------------------------
+package polyphism;
+
+import java.util.Scanner;
+
+public class RectTest {
+
+	public static void main(String[] args) {
+		int height;
+		int width;
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter height and width: ");
+		height = input.nextInt();
+		width = input.nextInt();
+		Rect rect = new Rect(height, width);
+        rect.draw();
+        System.out.println("Height: "+rect.getHeight()+",  Width: "+rect.getWidth());
+        
+        Rect rect2 = new Rect();
+        rect2.setHeight(8);
+        rect2.setWidth(8);
+        rect2.draw();
+        System.out.println("Height: "+rect2.getHeight()+",  Width: "+rect2.getWidth());
+        
+	}
+
+}
+
+
+
+--------------------------------------------------------------------
+package polyphism;
+
+public abstract class Shape {
+	
+
+	protected int height;
+	
+	public Shape(int h) {
+		height = h;
+	}
+
+	public Shape() {
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+	public abstract void draw();
+	
+		
+	
+	
+}
+
+
+--------------------------------------------------------------
+package polyphism;
+
+public class ShapeTest {
+
+	public static void main(String[] args) {
+		final int max = 100;
+		Shape shapes[] = new Shape[max];
+		int sct = 0;
+		shapes[sct++] = new Rect(6, 10);
+		shapes[sct++] = new Rect(8, 8);
+		shapes[sct++] = new Vtri(5, 1);
+		shapes[sct++] = new Vtri(5, 2);
+		shapes[sct++] = new Vtri(5, 3);
+		shapes[sct++] = new Vtri(5, 4);
+		
+		for(int i=0;i<sct;i++)
+		{
+			shapes[i].draw();
+			System.out.println(shapes[i]);
+		}
+
+	}
+}
+
+
+
+-----------------------------------------------------------------
+package polyphism;
+
+public class Vtri extends Shape{
+
+	private int type; // 1, 2, 3, 4
+
+	public Vtri(int height, int type) {
+		super(height);
+		this.type = type;
+	}
+
+	
+
+	public int getType() {
+		return type;
+	}
+
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+
+	
+	
+	@Override
+	public String toString() {
+		return "Vtri [type=" + type + ", height=" + height + "]";
+	}
+
+
+
+	public void draw() {
+		switch (type) {
+		case 1:
+			for (int i = 1; i <= height; i++) {
+				prchar("*", i);
+				System.out.println();
+			}
+			break;
+		case 2:
+			for (int i = 1; i <= height; i++) {
+				prchar(" ", height - i);
+				prchar("*", i);
+				System.out.println();
+			}
+			break;
+		case 3:
+			for (int i = 1; i <= height; i++) {
+				prchar("*", height - i + 1);
+				System.out.println();
+			}
+			break;
+		case 4:
+			for (int i = 1; i <= height; i++) {
+				prchar(" ", i - 1);
+				prchar("*", height - i + 1);
+				System.out.println();
+			}
+			break;
+		}
+	}
+
+	void prchar(String c, int n) {
+		for (int i = 1; i <= n; i++)
+			System.out.print(c);
+	}
+
+}
+
+--------------------------------------------------------------
+package polyphism;
+
+public class VtriTest {
+
+	public static void main(String[] args) {
+		Vtri vtri1 = new Vtri(5,1);
+		vtri1.draw();
+		System.out.println();
+		
+		Vtri vtri2 = new Vtri(5,2);
+		vtri2.draw();
+		System.out.println();
+		
+		Vtri vtri3 = new Vtri(5,3);
+		vtri3.draw();
+		System.out.println();
+		
+		Vtri vtri4 = new Vtri(5,4);
+		vtri4.draw();
+		System.out.println();
+	}
+}
