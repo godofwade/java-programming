@@ -1,0 +1,70 @@
+package p1;
+
+import java.util.Scanner;
+
+public class P1_407410355 {
+
+	public static void main(String[] args) {
+		
+		int x,y,z;
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("Enter three positive integers: ");
+		x = input.nextInt();
+		y = input.nextInt();
+		z = input.nextInt();
+		
+		Comp comp = new Comp(x,y,z);
+		
+		System.out.println();
+
+		System.out.printf("sum(%d,%d,%d) = %d\n",x,y,z,comp.sum());
+		System.out.printf("max(%d,%d,%d) = %d\n",x,y,z,comp.max());
+		System.out.printf("min(%d,%d,%d) = %d\n",x,y,z,comp.min());
+	}
+
+}
+
+
+class Comp{
+	
+	private int x,y,z;
+	
+	public Comp() {
+		
+	}
+		
+	public Comp(int x,int y,int z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+	
+	public int sum() {
+		return x+y+z;
+	}
+	
+	public int max() {
+		if(x>y&&x>z) {
+			return x;
+		}			
+		else if(y>x&&y>z) {
+			return y;
+		}
+		else
+			return z;		
+	}
+	
+	public int min() {
+		if(x<y&&x<z) {
+			return x;
+		}			
+		else if(y<x&&y<z) {
+			return y;
+		}
+		else
+			return z;
+	}
+	
+}
