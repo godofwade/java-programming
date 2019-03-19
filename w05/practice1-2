@@ -1,0 +1,154 @@
+package prac;
+
+public class p2_407410355 {
+
+	public static void main(String[] args) {
+	    Employee emp[] = new Employee[10];
+	    int empCount = 0;
+	    emp[empCount++] = new SalariedEmployee("John", "A123456789", 1100, "Manager", 60000);
+	   // emp[empCount++] = new HourlyEmployee("Joyce", "J376829345", 1200, "Secretary", 2500, 130);// hours=2500, hourlyPay=130
+	    SalariedEmployee salariedEmp = new SalariedEmployee();
+	    salariedEmp.setSalary(50000); // Salary=50000
+	    salariedEmp.setName("David");
+	    salariedEmp.setId("B135798642");
+	    salariedEmp.setEmpID(1151);
+	    salariedEmp.setTitle("Engineer");
+	    emp[empCount++] = salariedEmp;
+
+	    for (int i = 0; i < empCount; i++) {
+	       System.out.println(emp[i]);
+	       System.out.printf("Year earning: %d\n", emp[i].yearEarning());
+	       System.out.println("--------------------------------------");
+	    }
+
+	}
+
+}
+
+
+--------------------------------------------------------
+package prac;
+
+public abstract class Employee {
+
+	protected String name;
+	protected String id;
+	protected int empid;
+	protected String title;
+	
+	
+	public Employee(String name2, String id2, int empid2, String title2) {
+		name = name2;
+		id = id2;
+		empid = empid2;
+		title = title2;
+	}
+
+
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public int getEmpID() {
+		return empid;
+	}
+
+
+	public void setEmpID(int empid) {
+		this.empid = empid;
+	}
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public abstract int yearEarning();
+		// TODO Auto-generated method stub
+		
+	
+
+	
+}
+
+
+-----------------------------------------------
+package prac;
+
+public class SalariedEmployee extends Employee{
+	protected int salary;
+
+	public SalariedEmployee(String name, String id, int empid, String title, int salary) {
+		super(name,id,empid,title);
+		this.salary = salary;
+		
+	}
+
+
+	public SalariedEmployee() {
+		super();
+	}
+
+
+	public int getSalary() {
+		return salary;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+
+	public int yearEarning() {
+		return salary*12;
+		
+		
+	}
+
+
+	@Override
+	public String toString() {
+		return String.format("Name: %s\nID: %s\nEmpID: %d\nTitle: %s\nSalaried Employee with salary %d per month.",name,id,empid,title,salary);
+	}
+}
+
+
+-------------------------------------------------------------
+package prac;
+
+public class HourlyEmployee extends Employee{
+
+	@Override
+	public int yearEarning() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+
+}
